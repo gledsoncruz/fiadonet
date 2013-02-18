@@ -1,4 +1,12 @@
 Fiadonet::Application.routes.draw do
+  
+  root :to => "home#index"
+
+  resources :consumos
+  resources :produtos
+  resources :clientes
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
