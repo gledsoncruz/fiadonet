@@ -1,0 +1,21 @@
+<%= form_for(@consumo) do |f| %>
+  <% if @consumo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@consumo.errors.count, "error") %> prohibited this consumo from being saved:</h2>
+
+      <ul>
+      <% @consumo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :quant %><br />
+    <%= f.number_field :quant %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

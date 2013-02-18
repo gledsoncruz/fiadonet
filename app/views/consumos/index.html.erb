@@ -1,0 +1,23 @@
+<h1>Listing consumos</h1>
+
+<table>
+  <tr>
+    <th>Quant</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @consumos.each do |consumo| %>
+  <tr>
+    <td><%= consumo.quant %></td>
+    <td><%= link_to 'Show', consumo %></td>
+    <td><%= link_to 'Edit', edit_consumo_path(consumo) %></td>
+    <td><%= link_to 'Destroy', consumo, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Consumo', new_consumo_path %>
