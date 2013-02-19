@@ -1,17 +1,14 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Nome:</b>
-  <%= @cliente.nome %>
+  <h3><%= @cliente.nome %></h3>
 </p>
 
 <p>
-  <b>Tel:</b>
+  <b>Telefone:</b>
   <%= @cliente.tel %>
 </p>
 
 <p>
-  <b>Cel:</b>
+  <b>Celular:</b>
   <%= @cliente.cel %>
 </p>
 
@@ -19,6 +16,34 @@
   <b>Email:</b>
   <%= @cliente.email %>
 </p>
+
+<br />
+
+<h3>Consumo:</h3>
+<table class="table table-bordered table-hover table-condensed">
+  <thead>
+  <tr>    
+    <th>Produto</th>
+    <th>Data</th>
+    <th>Valor Unit</th>
+    <th>Quantidade</th>
+    <th>Total</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @cliente.consumos.each do |consumo| %>
+      <tr>
+        <td><%= consumo.produto.descricao %></td>
+        <td><%= consumo.created_at.to_s(:data_br) %></td>
+        <td><%= number_to_currency(consumo.produto.valor, :format => "%u %n", :separator => ",", :delimiter => ".", :unit => "R$") %></td>
+        <td><%= consumo.quant %></td>
+        <td><%= number_to_currency((consumo.quant * consumo.produto.valor), :format => "%u %n", :separator => ",", :delimiter => ".", :unit => "R$") %></td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 
 
 <%= link_to 'Edit', edit_cliente_path(@cliente) %> |

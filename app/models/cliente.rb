@@ -3,4 +3,5 @@ class Cliente < ActiveRecord::Base
   
   has_many :consumos
   has_many :produtos, :through => :consumos
+  
 end

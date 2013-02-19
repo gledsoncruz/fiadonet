@@ -10,14 +10,18 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :quant %><br />
-    <%= f.number_field :quant %>
+  
+   <div class="field">
+   <%= f.label :cliente %><br />
+   <%= f.collection_select :cliente_id, Cliente.all, :id, :nome, :include_blank => 'Selecione um Cliente' %>
   </div>
   <div class="field">
    <%= f.label :produto %><br />
    <%= f.collection_select :produto_id, Produto.all, :id, :descricao, :include_blank => 'Selecione um Produto' %>
+  </div>
+  <div class="field">
+    <%= f.label :quant %><br />
+    <%= f.text_field :quant %>
   </div>
   <div class="actions">
     <%= f.submit %>
