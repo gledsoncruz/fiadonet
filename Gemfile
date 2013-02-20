@@ -26,6 +26,7 @@ gem 'bootstrap-sass'
 gem 'will_paginate-bootstrap'
 gem 'will_paginate'
 gem 'simple_form'
+gem 'maskedinput-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

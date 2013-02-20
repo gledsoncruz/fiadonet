@@ -3,4 +3,7 @@ class Produto < ActiveRecord::Base
   
   has_many :consumos
   has_many :clientes, :through => :consumos
+  
+  validates_presence_of :descricao, :valor
+  
 end
