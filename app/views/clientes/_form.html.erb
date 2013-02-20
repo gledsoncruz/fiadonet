@@ -1,31 +1,18 @@
 
-<%= form_for(@cliente) do |f| %>
+<%= simple_form_for(@cliente, :html => {:class => 'form-vertical' }) do |f| %>
 
 
-
-    <%= f.label :nome %>
-    <%= f.text_field :nome%>
-      <div class="help-inline">
-        <%= error_tag @cliente, :nome %>
-      </div>
-    
-
+    <%= f.input :nome %>
   
-  
-    <%= f.label :tel %>
-    <%= f.text_field :tel %>
-  
-    <%= f.label :cel %>
-    <%= f.text_field :cel %>
+    <%= f.input :tel %>
+      
+    <%= f.input :cel %>
  
- 
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-
+    <%= f.input :email %>
 
   <div class="form-actions">
     <%= f.submit 'Salvar', :class => 'btn btn-primary' %>
-    <%= link_to 'Cancelar', clientes_path, :class => 'btn btn-primary' %>
+    <%= link_to 'Cancelar', clientes_path, :class => 'btn btn-danger' %>
   </div>
 
 <% end %>
