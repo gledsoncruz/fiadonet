@@ -16,7 +16,6 @@
 //= require bootstrap
 //= require maskedinput
 
-
 $(document).ready(function(){
     $("#cliente_tel").mask("(99) 9999-9999")
     $("#cliente_cel").mask("(99) 9999-9999")

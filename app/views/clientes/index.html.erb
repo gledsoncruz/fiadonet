@@ -1,5 +1,12 @@
 <h3>Lista de Clientes</h3>
 
+
+<%= form_tag clientes_path, :method => 'get', :class => 'form-search'  do %>
+  <%= text_field_tag :search, params[:search], :class => 'input-medium search-query' %>
+    <%= submit_tag "Consultar", :nome => nil, :class => 'btn btn-primary' %>
+<% end %>
+
+
 <table class="table table-bordered table-hover table-condensed">
   <thead>
   <tr>
