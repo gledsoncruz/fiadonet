@@ -1,16 +1,15 @@
 class ClientesController < ApplicationController
   # GET /clientes
-  # GET /clientes.json
-  
-  helper_method :sort_column, :sort_direction
+  # GET /clientes.json  
   
   def index
     #@clientes = Cliente.all
-    @clientes = Cliente.search(params[:search], params[:page]).order(sort_column + " " + sort_direction)     #paginate(:page => params[:page], :per_page => 10).order(sort_column + " " + sort_direction)
+    @clientes = Cliente.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order('id DESC')
     
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @clientes }
+      format.js # index.js.erb 
     end
   end
 
@@ -84,13 +83,5 @@ class ClientesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  def sort_column
-    Cliente.column_names.include?(params[:sort]) ? params[:sort] : "nome"
-  end
-  
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
-  
+
 end

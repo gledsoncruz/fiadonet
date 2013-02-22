@@ -8,9 +8,13 @@ class Cliente < ActiveRecord::Base
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
   validates_uniqueness_of :email
   
-  def self.search(search, page)
-  paginate :per_page => 10, :page => page,
-           :conditions => ['nome like ?', "#{search}%"], :order => 'nome'
+  def self.search(search)
+    
+    if search
+      where('nome LIKE ?', "#{search}%")
+    else
+      scoped
+    end
 end
   
 end
