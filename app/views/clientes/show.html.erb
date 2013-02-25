@@ -39,6 +39,10 @@
         <td><%= consumo.quant %></td>
         <td><%= number_to_currency((consumo.quant * consumo.produto.valor), :format => "%u %n", :separator => ",", :delimiter => ".", :unit => "R$") %></td>        
       </tr>
+      <tr id="total">
+        <td colspan=4>Total Geral:</td>        
+        <td>valor</td>
+      </tr>
     <% end %>
   </tbody>
 </table>
