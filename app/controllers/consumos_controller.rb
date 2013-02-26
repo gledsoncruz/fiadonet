@@ -25,7 +25,8 @@ class ConsumosController < ApplicationController
   # GET /consumos/new.json
   def new
     @consumo = Consumo.new
-
+    @consumo.cliente = Cliente.find(params[:cliente])
+    #@cliente = params[:cliente] # "value1"
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @consumo }
@@ -44,7 +45,7 @@ class ConsumosController < ApplicationController
 
     respond_to do |format|
       if @consumo.save
-        format.html { redirect_to @consumo, :notice => 'Consumo was successfully created.' }
+        format.html { redirect_to @consumo.cliente, :notice => 'Consumo adicionado com sucesso.' }
         format.json { render :json => @consumo, :status => :created, :location => @consumo }
       else
         format.html { render :action => "new" }

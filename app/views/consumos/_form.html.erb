@@ -1,29 +1,22 @@
-<%= form_for(@consumo) do |f| %>
-  <% if @consumo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@consumo.errors.count, "error") %> prohibited this consumo from being saved:</h2>
+<%= simple_form_for(@consumo, :html => {:class => 'form-vertical' }) do |f| %>
 
-      <ul>
-      <% @consumo.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= f.hidden_field :cliente_id, :value => @consumo.cliente.id %>
+  <p>
+    <h3><%= @consumo.cliente.nome %></h3>
+  </p>
+  <p>
+    <b>Email:</b>
+    <%= @consumo.cliente.email %>
+  </p>
   
-   <div class="field">
-   <%= f.label :cliente %><br />
-   <%= f.collection_select :cliente_id, Cliente.all, :id, :nome, :include_blank => 'Selecione um Cliente' %>
+  <%= f.collection_select :produto_id, Produto.all, :id, :descricao, :include_blank => false %>
+  
+    <%= f.input :quant %>
+
+  <div class="form-actions">
+    <%= f.submit 'Salvar', :class => 'btn btn-primary' %>
+    <%= link_to 'Cancelar', clientes_path, :class => 'btn btn-danger' %>
   </div>
-  <div class="field">
-   <%= f.label :produto %><br />
-   <%= f.collection_select :produto_id, Produto.all, :id, :descricao, :include_blank => 'Selecione um Produto' %>
-  </div>
-  <div class="field">
-    <%= f.label :quant %><br />
-    <%= f.text_field :quant %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
+

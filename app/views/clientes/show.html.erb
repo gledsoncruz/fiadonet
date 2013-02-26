@@ -1,3 +1,6 @@
+<div id="total">
+ Total: <%= number_to_currency(@cliente.consumos.sum {|c| c.quant * c.produto.valor}, :format => "%u %n", :separator => ",", :delimiter => ".", :unit => "R$") %> 
+</div>
 <p>
   <h3><%= @cliente.nome %></h3>
 </p>
@@ -39,13 +42,10 @@
         <td><%= consumo.quant %></td>
         <td><%= number_to_currency((consumo.quant * consumo.produto.valor), :format => "%u %n", :separator => ",", :delimiter => ".", :unit => "R$") %></td>        
       </tr>
-      <tr id="total">
-        <td colspan=4>Total Geral:</td>        
-        <td>valor</td>
-      </tr>
     <% end %>
   </tbody>
 </table>
 
 
 <%= link_to 'Voltar', clientes_path, :class => 'btn btn-primary' %>
+<%= link_to 'Adicionar Consumo', new_consumo_path(:cliente => @cliente.id), :class => 'btn btn-primary'%>
