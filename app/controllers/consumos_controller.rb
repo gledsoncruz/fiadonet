@@ -61,7 +61,7 @@ class ConsumosController < ApplicationController
 
     respond_to do |format|
       if @consumo.update_attributes(params[:consumo])
-        format.html { redirect_to @consumo, :notice => 'Consumo was successfully updated.' }
+        format.html { redirect_to @consumo.cliente, :notice => 'Consumo alterado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }

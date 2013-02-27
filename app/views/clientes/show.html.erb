@@ -31,6 +31,7 @@
     <th>Valor Unit</th>
     <th>Quantidade</th>
     <th>Total</th>
+    <th colspan=2 style="text-align: center;">Ações</th> 
   </tr>
   </thead>
   <tbody>
@@ -40,7 +41,10 @@
         <td><%= consumo.created_at.to_s(:data_br) %></td>
         <td><%= number_to_currency(consumo.produto.valor, :format => "%u %n", :separator => ",", :delimiter => ".", :unit => "R$") %></td>
         <td><%= consumo.quant %></td>
-        <td><%= number_to_currency((consumo.quant * consumo.produto.valor), :format => "%u %n", :separator => ",", :delimiter => ".", :unit => "R$") %></td>        
+        <td><%= number_to_currency((consumo.quant * consumo.produto.valor), :format => "%u %n", :separator => ",", :delimiter => ".", :unit => "R$") %></td>
+        <td style="text-align: center;"><%= link_to '', edit_consumo_path(consumo), :class => 'icon-pencil', :title => 'Editar' %></td>
+        <td style="text-align: center;"><%= link_to '', consumo, :class => 'icon-trash', :method => :delete, :data => { :confirm => 'Are you sure?' }, :title => 'Apagar' %></td>
+        
       </tr>
     <% end %>
   </tbody>

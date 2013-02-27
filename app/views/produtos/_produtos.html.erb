@@ -1,0 +1,25 @@
+<table class="table table-bordered table-hover table-condensed">
+  <thead>
+  <tr>
+    <th>Descrição</th>
+    <th>Valor</th>
+    <th>Data Cadastro</th>
+    <th colspan=3 style="text-align: center;">Ações</th>    
+  </tr>
+  </thead>
+  <tbody>
+    <% @produtos.each do |produto| %>
+      <tr>
+        <td><%= produto.descricao %></td>
+        <td><%= number_to_currency(produto.valor, :format => "%u %n", :separator => ",", :delimiter => ".", :unit => "R$") %></td>
+        <td><%= produto.created_at.to_s(:data_br) %></td>
+        <td style="text-align: center;"><%= link_to '', produto, :class => 'icon-search', :title => 'Visualizar' %></td>
+        <td style="text-align: center;"><%= link_to '', edit_produto_path(produto), :class => 'icon-pencil', :title => 'Editar' %></td>
+        <td style="text-align: center;"><%= link_to '', produto, :class => 'icon-trash', :method => :delete, :data => { :confirm => 'Are you sure?' }, :title => 'Apagar' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= will_paginate @produtos, :renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered' %>

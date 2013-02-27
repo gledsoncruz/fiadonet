@@ -1,13 +1,15 @@
 class ProdutosController < ApplicationController
   # GET /produtos
   # GET /produtos.json
+  
   def index
     #@produtos = Produto.all
-    @produtos = Produto.paginate(:page => params[:page], :per_page => 10).order('id DESC')
+    @produtos = Produto.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order('id DESC')
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @produtos }
+      format.js # index.js.erb 
     end
   end
 
