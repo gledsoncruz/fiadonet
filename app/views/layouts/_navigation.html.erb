@@ -1,6 +1,9 @@
-<%= link_to "Pagina Inicial", root_path, :class => 'brand' %>
 
+<%= link_to "Pagina Inicial", root_path, :class => 'brand' %>
+<% if user_signed_in? %>
 <ul class="nav">
   <li><%= link_to "Clientes", clientes_path %></li>
   <li><%= link_to "Produtos", produtos_path %></li>
+  <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
 </ul>
+<% end %>

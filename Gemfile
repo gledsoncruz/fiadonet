@@ -27,6 +27,7 @@ gem 'will_paginate-bootstrap'
 gem 'will_paginate'
 gem 'simple_form'
 gem 'maskedinput-rails'
+gem 'devise'
 
 
 # To use ActiveModel has_secure_password
