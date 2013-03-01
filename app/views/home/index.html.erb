@@ -1,2 +1,4 @@
-<h3>Bem vindo !</h3>
+<h3>Bem vindo <%= current_user.name %></h3>
+<p>Último login realizado em: <%= current_user.last_sign_in_at.to_s(:data_br)%> através do IP: <%= current_user.last_sign_in_ip %> </p>
+<p>IP atual: <%= current_user.current_sign_in_ip %> </p>
 
