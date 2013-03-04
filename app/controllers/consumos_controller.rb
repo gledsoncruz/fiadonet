@@ -1,6 +1,7 @@
 class ConsumosController < ApplicationController
   # GET /consumos
   # GET /consumos.json
+  load_and_authorize_resource
   def index
     @consumos = Consumo.all
 

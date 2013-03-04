@@ -29,6 +29,7 @@ gem 'will_paginate'
 gem 'simple_form'
 gem 'maskedinput-rails'
 gem 'devise'
+gem 'cancan'
 
 
 # To use ActiveModel has_secure_password

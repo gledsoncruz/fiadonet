@@ -1,10 +1,11 @@
 class ClientesController < ApplicationController
   # GET /clientes
-  # GET /clientes.json  
+  # GET /clientes.json
+  load_and_authorize_resource  
   
   def index
     #@clientes = Cliente.all
-    @clientes = Cliente.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order('id DESC')
+    @clientes = Cliente.accessible_by(current_ability).search(params[:search]).paginate(:page => params[:page], :per_page => 10).order('id DESC')
     
     respond_to do |format|
       format.html # index.html.erb
