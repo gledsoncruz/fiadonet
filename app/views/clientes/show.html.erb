@@ -31,7 +31,9 @@
     <th>Valor Unit</th>
     <th>Quantidade</th>
     <th>Total</th>
+    <% if can? :update, User %>
     <th colspan=2 style="text-align: center;">Ações</th> 
+    <% end %>
   </tr>
   </thead>
   <tbody>
@@ -42,14 +44,16 @@
         <td><%= number_to_currency(consumo.produto.valor, :format => "%u %n", :separator => ",", :delimiter => ".", :unit => "R$") %></td>
         <td><%= consumo.quant %></td>
         <td><%= number_to_currency((consumo.quant * consumo.produto.valor), :format => "%u %n", :separator => ",", :delimiter => ".", :unit => "R$") %></td>
+        <% if can? :update, User %>
         <td style="text-align: center;"><%= link_to '', edit_consumo_path(consumo), :class => 'icon-pencil', :title => 'Editar' %></td>
         <td style="text-align: center;"><%= link_to '', consumo, :class => 'icon-trash', :method => :delete, :data => { :confirm => 'Are you sure?' }, :title => 'Apagar' %></td>
-        
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-
+<% if can? :update, User %>
 <%= link_to 'Voltar', clientes_path, :class => 'btn btn-primary' %>
 <%= link_to 'Adicionar Consumo', new_consumo_path(:cliente => @cliente.id), :class => 'btn btn-primary'%>
+<% end %>

@@ -16,8 +16,10 @@
         <td><%= cliente.cel %></td>
         <td><%= cliente.email %></td>
         <td style="text-align: center;"><%= link_to '', cliente, :class => 'icon-search', :title => 'Visualizar' %></td>
+        <% if can? :update, User %>
         <td style="text-align: center;"><%= link_to '', edit_cliente_path(cliente), :class => 'icon-pencil', :title => 'Editar' %></td>
         <td style="text-align: center;"><%= link_to '', cliente, :class => 'icon-trash', :method => :delete, :data => { :confirm => 'Are you sure?' }, :title => 'Apagar' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

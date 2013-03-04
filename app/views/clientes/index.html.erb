@@ -1,16 +1,17 @@
 <h3>Lista de Clientes</h3>
 
-
+<% if can? :update, User %>
 <%= form_tag clientes_path, :method => 'get', :class => 'form-search', :id => 'clientes_search' do %>
   <%= text_field_tag :search, params[:search], :class => 'input-medium search-query' %>
     <%= submit_tag "Consultar", :nome => nil, :class => 'btn btn-primary' %>
 <% end %>
-
+<% end %>
 
 <div id="clientes">
   <%= render 'clientes' %>  
 </div>
 
 <br />
-
+<% if can? :update, User %>
 <%= link_to 'Novo Cliente', new_cliente_path, :class => 'btn btn-primary' %>
+<% end %>
