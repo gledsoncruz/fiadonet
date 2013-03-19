@@ -1,5 +1,7 @@
 Fiadonet::Application.routes.draw do
   
+  #get "users/index"
+
   devise_for :users
 
   root :to => "home#index"
@@ -7,7 +9,7 @@ Fiadonet::Application.routes.draw do
   resources :consumos
   resources :produtos
   resources :clientes
-
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

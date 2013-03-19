@@ -48,7 +48,7 @@ Fiadonet::Application.configure do
     :port => 587,
     :domain => "gmail.com",
     :user_name => "epdgeoprocessamento@gmail.com",
-    :password => "*******",
+    :password => "@siggeo2012",
     :authentication => :login,
     :enable_starttls_auto => true
   }

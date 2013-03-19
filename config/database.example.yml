@@ -1,0 +1,21 @@
+development:
+   adapter: postgresql
+   encoding: unicode
+   database: fiadonet_development
+   username: geo
+   password: geo
+
+test:
+   adapter: postgresql
+   encoding: unicode
+   database: fiadonet_test
+   username: geo
+   password: geo
+
+production:
+   adapter: postgresql
+   encoding: unicode
+   database: fiadonet_production
+   username: geo
+   password: geo
+
